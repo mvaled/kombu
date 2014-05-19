@@ -8,12 +8,6 @@ except ImportError:
     from urllib import quote, unquote                  # noqa
     from urlparse import urlparse, parse_qsl    # noqa
 
-from . import kwdict
-from kombu.five import string_t
-
-safequote = partial(quote, safe='')
-
-
 def _parse_url(url):
     scheme = urlparse(url).scheme
     schemeless = url[len(scheme) + 3:]
@@ -25,7 +19,7 @@ def _parse_url(url):
             unquote(parts.username or '') or None,
             unquote(parts.password or '') or None,
             unquote(path or '') or None,
-            kwdict(dict(parse_qsl(parts.query))))
+            dict(parse_qsl(parts.query)))
 
 
 def parse_url(url):

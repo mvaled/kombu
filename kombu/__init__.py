@@ -19,8 +19,8 @@ __docformat__ = 'restructuredtext en'
 import os
 import sys
 
-if sys.version_info < (2, 6):  # pragma: no cover
-    raise Exception('Kombu 3.1 requires Python versions 2.6 or later.')
+if sys.version_info < (2, 7):  # pragma: no cover
+    raise Exception('Kombu 3.1 requires Python versions 2.7 or later.')
 
 STATICA_HACK = True
 globals()['kcah_acitats'[::-1].upper()] = False

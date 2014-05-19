@@ -5,6 +5,7 @@ import sys
 import types
 
 from functools import wraps
+from io import StringIO
 
 try:
     from unittest import mock
@@ -13,7 +14,7 @@ except ImportError:
 
 from nose import SkipTest
 
-from kombu.five import builtins, string_t, StringIO
+from kombu.five import builtins, string_t
 from kombu.utils.encoding import ensure_bytes
 
 try:
