@@ -42,6 +42,7 @@ import threading
 import time
 
 from itertools import count
+from collections import OrderedDict
 
 import amqp.protocol
 
@@ -68,7 +69,7 @@ from kombu.five import Empty, items
 from kombu.log import get_logger
 from kombu.transport.virtual import Base64, Message
 from kombu.transport import base
-from kombu.utils.compat import OrderedDict
+
 
 
 logger = get_logger(__name__)

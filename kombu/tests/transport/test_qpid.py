@@ -7,7 +7,7 @@ import sys
 import threading
 import time
 
-from collections import Callable
+from collections import Callable, OrderedDict
 from itertools import count
 from functools import wraps
 
@@ -20,7 +20,7 @@ from kombu.transport.qpid import (AuthenticationFailure, Channel, Connection,
 from kombu.transport.virtual import Base64
 from kombu.tests.case import Case, Mock, case_no_pypy, case_no_python3
 from kombu.tests.case import patch
-from kombu.utils.compat import OrderedDict
+
 
 
 QPID_MODULE = 'kombu.transport.qpid'
