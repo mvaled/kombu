@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import sys
 import select
 import ssl
 import socket
@@ -1285,7 +1286,7 @@ class TestChannel(ExtraAssertionsMixin, Case):
             mock_priority, result['properties']['delivery_info']['priority'],
         )
 
-    @patch('__builtin__.buffer')
+    @patch('__builtin__.buffer' if sys.version_info < (3, 3) else 'builtins.buffer')
     @patch(QPID_MODULE + '.Channel.body_encoding')
     @patch(QPID_MODULE + '.Channel.encode_body')
     @patch(QPID_MODULE + '.Channel._put')
@@ -1974,7 +1975,7 @@ class TestTransportVerifyRuntimeEnvironment(Case):
         with self.assertRaises(RuntimeError):
             self.verify_runtime_environment(self.transport)
 
-    @patch('__builtin__.getattr')
+    @patch('__builtin__.getattr' if sys.version_info < (3, 3) else 'builtins.getattr')
     def test_raises_exc_for_PyPy(self, mock_getattr):
         mock_getattr.return_value = True
         with self.assertRaises(RuntimeError):

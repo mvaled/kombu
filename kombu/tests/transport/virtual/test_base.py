@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import sys
 import warnings
 
 from kombu import Connection
@@ -393,7 +394,7 @@ class test_Channel(Case):
         self.assertFalse(q._delivered)
 
     @patch('kombu.transport.virtual.emergency_dump_state')
-    @patch('__builtin__.print')
+    @patch('__builtin__.print' if sys.version_info < (3, 3) else 'builtins.print')
     def test_restore_unacked_once_when_unrestored(self, print_,
                                                   emergency_dump_state):
         q = self.channel.qos
